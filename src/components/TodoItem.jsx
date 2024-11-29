@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TodoContext } from "../App";
-
+import "./TodoItem.css";
 const TodoItem = ({ todo }) => {
     const { dispatch } = useContext(TodoContext);
 

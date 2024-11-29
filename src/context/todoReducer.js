@@ -1,10 +1,3 @@
-import React, {  useReducer } from 'react';
-import {TodoContext} from "../App";
-export const initialState = [
-  { id: Date.now(), text: "1st  todo", done: false },
-  { id: Date.now() + 1, text: "2nd todo", done: false },
-];
-
 export const todoReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
@@ -20,12 +13,3 @@ export const todoReducer = (state, action) => {
   }
 };
 
-export const TodoListProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
-
-  return (
-      <TodoContext.Provider value={{ state, dispatch }}>
-        {children}
-      </TodoContext.Provider>
-  );
-};
