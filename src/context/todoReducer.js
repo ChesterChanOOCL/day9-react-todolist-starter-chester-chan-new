@@ -1,8 +1,8 @@
 import React, {  useReducer } from 'react';
 import {TodoContext} from "../App";
 export const initialState = [
-  { id: Date.now(), text: "the first todo", done: false },
-  { id: Date.now() + 1, text: "the second todo", done: false },
+  { id: Date.now(), text: "1st  todo", done: false },
+  { id: Date.now() + 1, text: "2nd todo", done: false },
 ];
 
 export const todoReducer = (state, action) => {
