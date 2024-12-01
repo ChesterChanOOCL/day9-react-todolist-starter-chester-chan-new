@@ -24,3 +24,7 @@ export const toggleTodoItem = async (id) =>{
     const response = await instance.put(`/todoList/${id}`, {done: true});
     return response.data;
 }
+export const updateTodoItem = async (todo) =>{
+    const response = await instance.put(`/todoList/${todo.id}`, todo);
+    return response.data;
+}

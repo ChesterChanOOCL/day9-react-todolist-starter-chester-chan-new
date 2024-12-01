@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {TodoContext} from "../App";
 import "./TodoItem.css";
-import {removeTodoItem, toggleTodoItem} from "../api/todo";
+import {updateTodoItem, removeTodoItem, toggleTodoItem} from "../api/todo";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -17,6 +17,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const TodoItem = ({todo}) => {
     const {dispatch} = useContext(TodoContext);
+    const [updateText, setUpdateText] = useState("");
 
     const handleToggle = () => {
         toggleTodoItem(todo.id).then(() => {
@@ -29,6 +30,27 @@ const TodoItem = ({todo}) => {
         })
     }
     const [open, setOpen] = React.useState(false);
+
+    const handleUpdate = () => {
+        const trimmedUpdateText = updateText.trim();
+        if (trimmedUpdateText) {
+            console.log("Updating todo item with ID:", todo.id);
+            updateTodoItem({ text: trimmedUpdateText, done: todo.done, id: todo.id }).then(() => {
+                dispatch({type: 'UPDATE', payload: { text: trimmedUpdateText, done: todo.done, id: todo.id }});
+                console.log("Todo item updated successfully");
+            }).catch((error) => {
+                console.error("Failed to update todo item:", error);
+            });
+            setOpen(false);
+        } else {
+            console.error("Update text is empty");
+        }
+    };
+    const handleUpdateInputChange = (event) => {
+        setUpdateText(event.target.value);
+    }
+
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -69,11 +91,13 @@ const TodoItem = ({todo}) => {
                             margin="dense"
                             fullWidth
                             variant="standard"
+                            value={updateText}
+                            onChange={handleUpdateInputChange}
                         />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button type="submit">Confirm</Button>
+                        <Button onClick={handleUpdate} >Confirm</Button>
                     </DialogActions>
                 </Dialog>
             </Stack>
