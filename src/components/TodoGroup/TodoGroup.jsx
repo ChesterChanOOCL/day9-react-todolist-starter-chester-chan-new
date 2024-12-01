@@ -1,11 +1,15 @@
-import {useContext, useState} from "react";
-import TodoItem from "./TodoItem";
-import {TodoContext} from "../App";
+import { useContext, useState } from "react";
+import TodoItem from "../TodoItem/TodoItem";
+import { TodoContext } from "../../App";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import "./TodoGroup.css"
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import "./TodoGroup.css";
+
 const TodoGroup = () => {
-    const { state } = useContext(TodoContext)
+    const { state } = useContext(TodoContext);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     const handlePageChange = (event, value) => {
@@ -21,12 +25,16 @@ const TodoGroup = () => {
             {state.length === 0 ? (
                 <span>Add an Item</span>
             ) : (
-                currentItems.map((todo) => (
-                    <TodoItem key={todo.id} todo={todo}/>
-                ))
+                <List>
+                    {currentItems.map((todo) => (
+                        <ListItem key={todo.id} className="todo-item">
+                            <TodoItem todo={todo} />
+                        </ListItem>
+                    ))}
+                </List>
             )}
-            <div className={"pagination-bar"}>
-                <Stack spacing={2} >
+            <div className="pagination-bar">
+                <Stack spacing={2}>
                     <Pagination
                         count={Math.ceil(state.length / itemsPerPage)}
                         page={currentPage}
@@ -37,7 +45,6 @@ const TodoGroup = () => {
             </div>
         </div>
     );
-}
+};
 
 export default TodoGroup;
-

@@ -6,11 +6,17 @@
     border-bottom: 1px solid #ddd;
     word-wrap: break-word;
     min-width: 200px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .todo-text.done {
     text-decoration: line-through;
     color: #999;
+}
+
+.todo-text:hover {
+    background-color: #f0f0f0;
 }
 
 .crossButton {
@@ -21,18 +27,31 @@
     border: 3px solid #c60101;
     border-radius: 5px;
     cursor: pointer;
-
     background-color: #ff050b;
     color: white;
-
+    transition: box-shadow 0.3s ease;
 }
 
 .crossButton:hover {
     box-shadow: 0 0 5px #fa4e4e;
 }
+
 .todo-item-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.todo-item-wrapper:hover {
+    background-color: #f9f9f9;
+}
+
+.pagination-bar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }

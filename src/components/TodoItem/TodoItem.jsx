@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
-import {TodoContext} from "../App";
+import {TodoContext} from "../../App";
 import "./TodoItem.css";
-import {updateTodoItem, removeTodoItem, toggleTodoItem} from "../api/todo";
+import {updateTodoItem, removeTodoItem, toggleTodoItem} from "../../api/todo";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
