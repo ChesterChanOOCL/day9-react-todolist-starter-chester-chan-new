@@ -6,6 +6,8 @@ import { TodoContext } from "../../App";
 import { getTodoList } from "../../api/todo";
 import { Spin } from "antd";
 import { LoadingOutlined } from '@ant-design/icons';
+import '@fontsource/roboto/300.css';
+import Typography from '@mui/material/Typography';
 
 const TodoList = () => {
     const { dispatch } = useContext(TodoContext);
@@ -18,16 +20,19 @@ const TodoList = () => {
             }).finally(() => {
                 setLoading(false);
             });
-        }, 3000); // Delay API call by 3 seconds
+        }, 3000);
     }, [dispatch]);
 
     return (
         <div className="todoList">
-            <h2>Organise your Todo List</h2>
+
+            <Typography variant="h5" gutterBottom>
+                Mark down some todos . . .
+            </Typography>
             {loading ? (
                 <div className="loading-container">
                     <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
-                    <p>Loading...</p>
+                    <Typography>Loading...</Typography>
                 </div>
             ) : (
                 <>
