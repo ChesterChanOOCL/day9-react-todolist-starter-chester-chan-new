@@ -4,6 +4,8 @@ import {addTodoItem} from "../api/todo";
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 
 const TodoGenerator = () => {
     const [text, setText] = useState("")
@@ -26,7 +28,10 @@ const TodoGenerator = () => {
 return (
     <div className={"todo-generator-wrapper"}>
         <input className="inputField" maxLength={100} value={text} onChange={handleChange}/>
-        <button className="addButton" onClick={handleAdd}>add</button>
+
+          <Button onClick={handleAdd} sx={{"font-size": "16px"}} variant="contained" startIcon={<AddIcon/>}>
+                    Add
+            </Button>
 
     </div>
 )
