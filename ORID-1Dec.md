@@ -3,7 +3,6 @@
 
 ## Reflective
 
-
 ## Interpretive
 
 ## Decisional
