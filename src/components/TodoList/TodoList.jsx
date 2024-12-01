@@ -1,9 +1,9 @@
-import TodoGenerator from "./TodoGenerator";
-import TodoGroup from "./TodoGroup";
+import TodoGenerator from "../TodoGenerator";
+import TodoGroup from "../TodoGroup/TodoGroup";
 import "./TodoList.css";
 import {useContext, useEffect, useState} from "react";
-import {TodoContext} from "../App";
-import {getTodoList} from "../api/todo";
+import {TodoContext} from "../../App";
+import {getTodoList} from "../../api/todo";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
@@ -25,7 +25,7 @@ const TodoList = () => {
 
   return (
       <div className ="todoList">
-        <h2>{"Todo List"}</h2>
+        <h2>{"Organise your Todo List"}</h2>
           <Flex gap="middle" vertical>
               <Spin >
                     Loading . .

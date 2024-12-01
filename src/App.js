@@ -1,11 +1,11 @@
 import { createContext, useReducer } from "react";
 import './App.css';
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList/TodoList";
 import {  todoReducer } from "./context/todoReducer";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import NotFound  from "./components/NotFound";
 import DoneList from "./components/DoneList";
-import {TodoNavBar} from "./components/TodoNavBar";
+import {TodoNavBar} from "./components/TodoNavBar/TodoNavBar";
 
 export const TodoContext = createContext();
 
