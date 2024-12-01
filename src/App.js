@@ -7,7 +7,6 @@ import NotFound  from "./components/NotFound";
 import DoneList from "./components/DoneList";
 import {TodoNavBar} from "./components/TodoNavBar";
 
-
 export const TodoContext = createContext();
 
 function App() {
