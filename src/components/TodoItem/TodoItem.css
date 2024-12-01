@@ -7,12 +7,81 @@
     word-wrap: break-word;
     min-width: 200px;
     padding: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
     transition: background-color 0.3s ease;
+}
+@keyframes lineThrough {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
 
 .todo-text.done {
-    text-decoration: line-through;
-    color: #999;
+    color: green;
+    position: relative;
+    overflow: hidden;
+}
+
+.todo-text.done::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    height: 2px;
+    background-color: green;
+    width: 0;
+    animation: lineThrough 1s ease-out forwards; /* Adjust the duration as needed */
+}
+@keyframes lineThrough {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes lineUnThrough {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+.todo-text {
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.todo-text.done {
+    color: #1976d2;
+}
+
+.todo-text.done::after,
+.todo-text.undone::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    height: 2px;
+    background-color: #1976d2;
+}
+
+.todo-text.done::after {
+    width: 100%;
+    animation: lineThrough 0.5s ease-out forwards;
+}
+
+.todo-text.undone::after {
+    width: 0;
+    animation: lineUnThrough 0.5s ease-out forwards;
 }
 
 .todo-text:hover {

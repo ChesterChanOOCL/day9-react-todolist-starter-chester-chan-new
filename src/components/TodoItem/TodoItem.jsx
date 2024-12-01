@@ -63,7 +63,7 @@ const TodoItem = ({todo}) => {
     return (
         <div className="todo-item-wrapper">
             <div
-                className={`todo-text ${todo.done ? "done" : ""}`}
+                className={`todo-text ${todo.done ? "done" : "undone"}`}
                 onClick={handleToggle}
             >
                 {todo.text}
@@ -83,7 +83,7 @@ const TodoItem = ({todo}) => {
                         component: 'form',
                     }}
                 >
-                    <DialogTitle>Edit </DialogTitle>
+                    <DialogTitle sx={{"font-size":"16px"}} > EDIT THE ITEM NAME : </DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
