@@ -18,7 +18,7 @@ export const removeTodoItem = async (id) =>{
     return response.data;
 }
 export const toggleTodoItem = async (id) =>{
-    const response = await instance.put(`/${id}`, {done: true});
+    const response = await instance.put(`/toggle/${id}`, {done: true});
     return response.data;
 }
 export const updateTodoItem = async (todo) =>{

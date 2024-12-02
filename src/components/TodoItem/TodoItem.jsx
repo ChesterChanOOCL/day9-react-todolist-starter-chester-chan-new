@@ -1,57 +1,57 @@
-import React, {useContext, useState} from "react";
-import {TodoContext} from "../../App";
+import React, { useContext, useState } from "react";
+import { TodoContext } from "../../App";
 import "./TodoItem.css";
-import {updateTodoItem, removeTodoItem, toggleTodoItem} from "../../api/todo";
+import { updateTodoItem, removeTodoItem, toggleTodoItem } from "../../api/todo";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Stack from '@mui/material/Stack';
-
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-
-const TodoItem = ({todo}) => {
-    const {dispatch} = useContext(TodoContext);
-    const [updateText, setUpdateText] = useState("");
+const TodoItem = ({ todo }) => {
+    const { dispatch } = useContext(TodoContext);
+    const [updateText, setUpdateText] = useState(todo.text);
+    const [open, setOpen] = useState(false);
 
     const handleToggle = () => {
         toggleTodoItem(todo.id).then(() => {
-            dispatch({type: 'TOGGLE', payload: todo.id});
-        })
-    }
+            dispatch({ type: 'TOGGLE', payload: todo.id });
+        });
+    };
+
     const handleRemove = () => {
         removeTodoItem(todo.id).then(() => {
-            dispatch({type: 'REMOVE', payload: todo.id});
-        })
-    }
-    const [open, setOpen] = React.useState(false);
+            dispatch({ type: 'REMOVE', payload: todo.id });
+        });
+    };
 
     const handleUpdate = () => {
         const trimmedUpdateText = updateText.trim();
         if (trimmedUpdateText) {
             console.log("Updating todo item with ID:", todo.id);
-            updateTodoItem({text: trimmedUpdateText, done: todo.done, id: todo.id})
-                // Should use the backend returned instead
-                .then((todo) => {
-                    console.log ("updating id with in frontend with id: " +  todo.id);
-                dispatch({type: 'UPDATE', payload: todo});
-            })
+            updateTodoItem({ text: trimmedUpdateText, done: todo.done, id: todo.id })
+                .then((updatedTodo) => {
+                    dispatch({ type: 'UPDATE', payload: updatedTodo });
+                    console.log("Updated todo item with ID:", updatedTodo.id);
+                })
                 .catch((error) => {
-                console.error("Failed to update todo item:", error);
-            });
+                    console.error("Failed to update todo item:", error);
+                });
             setOpen(false);
+            //refresh the page
+            window.location.reload();
         } else {
             console.error("Update text is empty");
         }
     };
+
     const handleUpdateInputChange = (event) => {
         setUpdateText(event.target.value);
-    }
-
+    };
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -71,10 +71,10 @@ const TodoItem = ({todo}) => {
             </div>
 
             <Stack direction="row" spacing={2}>
-                <Button onClick={handleRemove} sx={{"font-size": "10px"}} variant="outlined" startIcon={<DeleteIcon/>}>
+                <Button onClick={handleRemove} sx={{ "font-size": "10px" }} variant="outlined" startIcon={<DeleteIcon />}>
                     Delete
                 </Button>
-                <Button onClick={handleClickOpen} sx={{"font-size": "10px"}} variant="contained" endIcon={<EditIcon/>}>
+                <Button onClick={handleClickOpen} sx={{ "font-size": "10px" }} variant="contained" endIcon={<EditIcon />}>
                     Update
                 </Button>
                 <Dialog
@@ -84,7 +84,7 @@ const TodoItem = ({todo}) => {
                         component: 'form',
                     }}
                 >
-                    <DialogTitle sx={{"font-size": "16px"}}> EDIT THE ITEM NAME : </DialogTitle>
+                    <DialogTitle sx={{ "font-size": "16px" }}>EDIT THE ITEM NAME:</DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
