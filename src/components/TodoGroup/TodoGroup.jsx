@@ -5,7 +5,6 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import "./TodoGroup.css";
 
 const TodoGroup = () => {

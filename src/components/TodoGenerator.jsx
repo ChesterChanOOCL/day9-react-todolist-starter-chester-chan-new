@@ -1,9 +1,6 @@
 import {useContext, useState} from "react";
 import {TodoContext} from "../App";
 import {addTodoItem} from "../api/todo";
-import Stack from "@mui/material/Stack";
-import Pagination from "@mui/material/Pagination";
-
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 
