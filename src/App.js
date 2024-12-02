@@ -7,6 +7,7 @@ import NotFound  from "./components/NotFound";
 import DoneList from "./components/DoneList";
 import HelpPage from "./components/HelpPage/HelpPage";
 import {TodoNavBar} from "./components/TodoNavBar/TodoNavBar";
+import HardStop from "./components/HardStop";
 
 export const TodoContext = createContext();
 
@@ -25,6 +26,8 @@ function App() {
                   <Route path="/todo-list" element={<TodoList/>}></Route>
                   <Route path="/done-list" element={<DoneList/>}></Route>
                   <Route path="/help-page" element={<HelpPage/>}></Route>
+                  <Route path="/not-found" element={<NotFound/>} ></Route>
+                  <Route path="/hard-stop" element={<HardStop/>} ></Route>
                   <Route path="/*" element={<NotFound/>} ></Route>
 
               </Routes>

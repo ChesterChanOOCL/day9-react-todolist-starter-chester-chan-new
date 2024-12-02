@@ -21,7 +21,7 @@ const TodoList = () => {
             }).finally(() => {
                 setLoading(false);
             });
-        }, 3000);
+        }, 0);
     }, [dispatch]);
 
     return (

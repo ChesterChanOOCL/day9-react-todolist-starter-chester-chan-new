@@ -15,11 +15,12 @@ const TodoGenerator = () => {
     const handleAdd = async () => {
         const trimmedText = text.trim();
         if (trimmedText) {
-            addTodoItem({text: trimmedText, done: false}).then((todo) => {
-                dispatch({type: 'ADD', payload: {text: trimmedText, done: false, id: Math.random()}});
+            addTodoItem({ text: trimmedText, done: false }).then((todo) => {
+                const randomId = Math.floor(Math.random() * 200) + 1;
+                dispatch({ type: 'ADD', payload: { text: trimmedText, done: false, id: randomId } });
             });
         }
-    }
+    };
 
     return (
         <div className={"todo-generator-wrapper"}>

@@ -12,7 +12,7 @@ export const todoReducer = (state, action) => {
       return state.map((todo =>{ return todo.id === action.payload.id ? action.payload : todo}));
     case "REMOVE":
       return state.filter((todo) => todo.id !== action.payload);
-   //delete
+   // can delete
     case 'REORDER':
       return action.payload;
     default:

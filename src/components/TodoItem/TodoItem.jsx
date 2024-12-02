@@ -11,7 +11,6 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
@@ -35,10 +34,13 @@ const TodoItem = ({todo}) => {
         const trimmedUpdateText = updateText.trim();
         if (trimmedUpdateText) {
             console.log("Updating todo item with ID:", todo.id);
-            updateTodoItem({text: trimmedUpdateText, done: todo.done, id: todo.id}).then(() => {
-                dispatch({type: 'UPDATE', payload: {text: trimmedUpdateText, done: todo.done, id: todo.id}});
-                console.log("Todo item updated successfully");
-            }).catch((error) => {
+            updateTodoItem({text: trimmedUpdateText, done: todo.done, id: todo.id})
+                // Should use the backend returned instead
+                .then((todo) => {
+                    console.log ("updating id with in frontend with id: " +  todo.id);
+                dispatch({type: 'UPDATE', payload: todo});
+            })
+                .catch((error) => {
                 console.error("Failed to update todo item:", error);
             });
             setOpen(false);

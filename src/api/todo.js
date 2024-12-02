@@ -1,30 +1,27 @@
-import axios from "axios";
 
-const instance = axios.create({
-    baseURL: "https://67495be9868020296630a684.mockapi.io/todo",
-    timeout: 5000
-})
+import instance from "./interceptor"
+
 
 
 export const getTodoList = async () =>{
-    const response = await instance.get("/todoList")
+    const response = await instance.get("")
      return response.data;
 }
 
 export const addTodoItem = async (todo) =>{
-    const response = await instance.post("/todoList", todo)
+    const response = await instance.post("", todo)
     return response.data;
 }
 
 export const removeTodoItem = async (id) =>{
-    const response = await instance.delete(`/todoList/${id}`)
+    const response = await instance.delete(`/${id}`)
     return response.data;
 }
 export const toggleTodoItem = async (id) =>{
-    const response = await instance.put(`/todoList/${id}`, {done: true});
+    const response = await instance.put(`/${id}`, {done: true});
     return response.data;
 }
 export const updateTodoItem = async (todo) =>{
-    const response = await instance.put(`/todoList/${todo.id}`, todo);
+    const response = await instance.put(`/${todo.id}`, todo);
     return response.data;
 }

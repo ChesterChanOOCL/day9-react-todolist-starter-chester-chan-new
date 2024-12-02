@@ -38,6 +38,10 @@ export const TodoNavBar = () => {
                         <Link to="/help-page" className={classes.link}>Help</Link>
                     </Button>
                     <Button color="inherit">
+                        <Link to="/todo" className={classes.link}>Home</Link>
+                    </Button>
+
+                    <Button color="inherit">
                         <Link to="/*" className={classes.link}>Not Found Example</Link>
                     </Button>
 
