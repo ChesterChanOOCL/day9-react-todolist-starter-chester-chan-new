@@ -15,7 +15,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-
 const TodoItem = ({todo}) => {
     const {dispatch} = useContext(TodoContext);
     const [updateText, setUpdateText] = useState("");
@@ -36,8 +35,8 @@ const TodoItem = ({todo}) => {
         const trimmedUpdateText = updateText.trim();
         if (trimmedUpdateText) {
             console.log("Updating todo item with ID:", todo.id);
-            updateTodoItem({ text: trimmedUpdateText, done: todo.done, id: todo.id }).then(() => {
-                dispatch({type: 'UPDATE', payload: { text: trimmedUpdateText, done: todo.done, id: todo.id }});
+            updateTodoItem({text: trimmedUpdateText, done: todo.done, id: todo.id}).then(() => {
+                dispatch({type: 'UPDATE', payload: {text: trimmedUpdateText, done: todo.done, id: todo.id}});
                 console.log("Todo item updated successfully");
             }).catch((error) => {
                 console.error("Failed to update todo item:", error);
@@ -50,7 +49,6 @@ const TodoItem = ({todo}) => {
     const handleUpdateInputChange = (event) => {
         setUpdateText(event.target.value);
     }
-
 
 
     const handleClickOpen = () => {
@@ -84,7 +82,7 @@ const TodoItem = ({todo}) => {
                         component: 'form',
                     }}
                 >
-                    <DialogTitle sx={{"font-size":"16px"}} > EDIT THE ITEM NAME : </DialogTitle>
+                    <DialogTitle sx={{"font-size": "16px"}}> EDIT THE ITEM NAME : </DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
@@ -98,7 +96,7 @@ const TodoItem = ({todo}) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleUpdate} >Confirm</Button>
+                        <Button onClick={handleUpdate}>Confirm</Button>
                     </DialogActions>
                 </Dialog>
             </Stack>

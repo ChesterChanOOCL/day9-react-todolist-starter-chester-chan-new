@@ -13,6 +13,7 @@ const TodoList = () => {
     const { dispatch } = useContext(TodoContext);
     const [loading, setLoading] = useState(true);
 
+    // catch if have
     useEffect(() => {
         setTimeout(() => {
             getTodoList().then((todo) => {

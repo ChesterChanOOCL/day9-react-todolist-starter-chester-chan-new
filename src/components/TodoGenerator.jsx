@@ -18,23 +18,20 @@ const TodoGenerator = () => {
     const handleAdd = async () => {
         const trimmedText = text.trim();
         if (trimmedText) {
-            addTodoItem({ text: trimmedText, done: false}).then((todo) => {
-                dispatch({type: 'ADD', payload: { text: trimmedText, done: false, id: Math.random()}});
+            addTodoItem({text: trimmedText, done: false}).then((todo) => {
+                dispatch({type: 'ADD', payload: {text: trimmedText, done: false, id: Math.random()}});
             });
         }
+    }
 
-}
-
-return (
-    <div className={"todo-generator-wrapper"}>
-        <input className="inputField" maxLength={100} value={text} onChange={handleChange}/>
-
-          <Button onClick={handleAdd} sx={{"font-size": "16px"}} variant="contained" startIcon={<AddIcon/>}>
-                    Add
+    return (
+        <div className={"todo-generator-wrapper"}>
+            <input className="inputField" maxLength={100} value={text} onChange={handleChange}/>
+            <Button onClick={handleAdd} sx={{"font-size": "16px"}} variant="contained" startIcon={<AddIcon/>}>
+                Add
             </Button>
-
-    </div>
-)
+        </div>
+    )
 }
 
 export default TodoGenerator;

@@ -21,11 +21,11 @@ function App() {
               <TodoNavBar/>
               <Routes>
                   {/*there is no precedence*/}
-                  <Route path="/*" element={<NotFound/>} ></Route>
                   <Route path="/" element={<Navigate to="todo-list"/>}  ></Route>
                   <Route path="/todo-list" element={<TodoList/>}></Route>
                   <Route path="/done-list" element={<DoneList/>}></Route>
                   <Route path="/help-page" element={<HelpPage/>}></Route>
+                  <Route path="/*" element={<NotFound/>} ></Route>
 
               </Routes>
           </BrowserRouter>

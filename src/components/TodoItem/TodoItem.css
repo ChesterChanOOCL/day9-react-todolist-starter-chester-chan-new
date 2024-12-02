@@ -34,7 +34,7 @@
     height: 2px;
     background-color: green;
     width: 0;
-    animation: lineThrough 1s ease-out forwards; /* Adjust the duration as needed */
+    animation: lineThrough 1s ease-out forwards;
 }
 @keyframes lineThrough {
     from {
